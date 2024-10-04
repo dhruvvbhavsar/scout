@@ -56,8 +56,8 @@ export default function Home() {
 
           setInput("");
         }}
-        className="fixed bottom-0 w-full max-w-md md:max-w-xl left-1/2 -translate-x-1/2 mb-8"
-      >
+        className="fixed bottom-0 w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl left-1/2 -translate-x-1/2 mb-8"
+            >
         <div className="relative">
           <input
             className="w-full p-3 pr-12 border border-gray-300 shadow-xl rounded-full dark:bg-black text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition-all duration-200 ease-in-out"
