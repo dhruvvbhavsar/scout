@@ -13,7 +13,7 @@ export const contentType = "image/png";
 export default async function Image() {
   return new ImageResponse(
     (
-      <div tw="flex w-full h-full items-center justify-center ">
+      <div tw="flex w-full h-full bg-white items-center justify-center ">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="128"
