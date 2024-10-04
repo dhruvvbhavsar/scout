@@ -10,6 +10,7 @@ import MovieInfo from "@/components/movie-info";
 import MovieList from "@/components/movie-list";
 import TicketBooking from "@/components/seat-booking";
 import Ticket from "@/components/ticket-ui";
+import Spinner from "@/components/spinner";
 
 export interface ServerMessage {
   role: "user" | "assistant";
@@ -32,6 +33,7 @@ export async function continueConversation(
   const result = await streamUI({
     model: openai("gpt-4o-mini-2024-07-18"),
     messages: [...history.get(), { role: "user", content: input }],
+    initial: <Spinner />,
     system: `choose the showMovieInformation tool if the user asks about a movie, the showMovieSuggestions tool if the user asks for movie suggestions, and the bookTicket tool if the user wants to book a ticket`,
     text: ({ content, done }) => {
       if (done) {
@@ -55,8 +57,6 @@ export async function continueConversation(
             .describe("A message to display along with the movie"),
         }),
         generate: async function* ({ title, message }) {
-          yield <div>Loading movie information...</div>;
-
           history.done((messages: ServerMessage[]) => [
             ...messages,
             {
@@ -90,7 +90,7 @@ export async function continueConversation(
             ),
         }),
         generate: async function* ({ titles, message }) {
-          yield <div>Loading movie suggestions...</div>;
+          yield <Spinner />;
 
           history.done((messages: ServerMessage[]) => [
             ...messages,
@@ -123,7 +123,7 @@ export async function continueConversation(
             .describe("The title of the movie to book a ticket for"),
         }),
         generate: async function* ({ title }) {
-          yield <div>Loading ticket booking tool...</div>;
+          yield <Spinner />;
 
           history.done((messages: ServerMessage[]) => [
             ...messages,
@@ -146,7 +146,7 @@ export async function continueConversation(
           totalPrice: z.number().describe("The total price of the ticket"),
         }),
         generate: async function* ({ title, seats, totalPrice }) {
-          yield <div>Loading ticket...</div>;
+          yield <Spinner />;
 
           history.done((messages: ServerMessage[]) => [
             ...messages,

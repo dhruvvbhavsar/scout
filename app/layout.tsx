@@ -18,7 +18,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Scout",
-  description: "Search & Book movie tickets with AI",
+  description: "Search & Book movies tickets with AI",
 };
 
 export default function RootLayout({
