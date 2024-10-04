@@ -30,7 +30,7 @@ export default function RootLayout({
     <html suppressHydrationWarning lang="en">
       <ThemeProvider
         attribute="class"
-        defaultTheme="dark"
+        defaultTheme="system"
         enableSystem
         disableTransitionOnChange
       >
