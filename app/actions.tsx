@@ -31,7 +31,7 @@ export async function continueConversation(
   const history = getMutableAIState();
 
   const result = await streamUI({
-    model: openai("gpt-4o-mini-2024-07-18"),
+    model: openai("gpt-4o-2024-08-06"),
     messages: [...history.get(), { role: "user", content: input }],
     initial: <Spinner />,
     system: `
